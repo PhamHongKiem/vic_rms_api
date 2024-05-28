@@ -1,0 +1,6 @@
+@vic_rms_api_HostAddress = http://localhost:5017
+
+GET {{vic_rms_api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

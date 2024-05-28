@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "B+kRKKpOjUu6ghHmhcO1M4eJtY/ysfADreyTlwde2nQ=",
+  "Source": "vic_rms_api",
+  "BasePath": "_content/vic_rms_api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,84 @@
+D:\Work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\appsettings.Development.json
+D:\Work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\appsettings.json
+D:\Work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\vic_rms_api.exe
+D:\Work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\vic_rms_api.deps.json
+D:\Work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\vic_rms_api.runtimeconfig.json
+D:\Work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\vic_rms_api.dll
+D:\Work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\vic_rms_api.pdb
+D:\Work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\Work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\Work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.csproj.AssemblyReference.cache
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.AssemblyInfoInputs.cache
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.AssemblyInfo.cs
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.csproj.CoreCompileInputs.cache
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.MvcApplicationPartsAssemblyInfo.cs
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.MvcApplicationPartsAssemblyInfo.cache
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets.build.json
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets.development.json
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets\msbuild.vic_rms_api.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets\msbuild.build.vic_rms_api.props
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.vic_rms_api.props
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.vic_rms_api.props
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets.pack.json
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\scopedcss\bundle\vic_rms_api.styles.css
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_.D4A4BB42.Up2Date
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.dll
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\refint\vic_rms_api.dll
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.pdb
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.genruntimeconfig.cache
+D:\Work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\ref\vic_rms_api.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\appsettings.json
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\vic_rms_api.exe
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\vic_rms_api.deps.json
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\vic_rms_api.runtimeconfig.json
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\vic_rms_api.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\vic_rms_api.pdb
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.csproj.AssemblyReference.cache
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.AssemblyInfoInputs.cache
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.AssemblyInfo.cs
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.csproj.CoreCompileInputs.cache
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets\msbuild.vic_rms_api.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets\msbuild.build.vic_rms_api.props
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.vic_rms_api.props
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.vic_rms_api.props
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\scopedcss\bundle\vic_rms_api.styles.css
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_.D4A4BB42.Up2Date
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\refint\vic_rms_api.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.pdb
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\vic_rms_api.genruntimeconfig.cache
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\obj\Debug\net8.0\ref\vic_rms_api.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\MySqlConnector.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Microsoft.Extensions.Http.Polly.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Polly.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Polly.Extensions.Http.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Serilog.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Serilog.AspNetCore.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+C:\Users\HongKiem\My Drive\work\endpoint\vic_rms_api\vic_rms_api\bin\Debug\net8.0\Serilog.Sinks.File.dll
