@@ -131,7 +131,9 @@ namespace vic_rms_api.Services
                                 RMS_propertyID = propertyId,
                                 RMS_rateID = rate.RateId,
                                 RMS_roomtypeID = cat.CategoryId,
-                                Datesell = day.TheDate
+                                Datesell = day.TheDate,
+                                DailyRate = (decimal?)day.DailyRate ?? -1, // Gán giá trị mặc định là -1 nếu không có DailyRate
+                                RoomAvailable = day.AvailableAreas
                             })))
                     .Distinct()
                     .ToList();
@@ -166,6 +168,7 @@ namespace vic_rms_api.Services
                     {
                         foreach (var day in rate.DayBreakdown)
                         {
+                            decimal dailyRate = (decimal?)day.DailyRate ?? -1;
                             var key = new RateKey
                             {
                                 RMS_propertyID = propertyId,
@@ -176,7 +179,7 @@ namespace vic_rms_api.Services
 
                             if (existingRates.TryGetValue(key, out var existingRate))
                             {
-                                existingRate.DailyRate = (int)day.DailyRate;
+                                existingRate.DailyRate = (int)dailyRate;
                                 existingRate.RoomAvailable = day.AvailableAreas;
                                 existingRate.Updated_Date = DateTime.Now;
                                 updatedRates.Add(existingRate);  // Add to updatedRates list
@@ -189,7 +192,7 @@ namespace vic_rms_api.Services
                                     RMS_roomtypeID = category.CategoryId,
                                     RMS_propertyID = propertyId,
                                     Datesell = day.TheDate,
-                                    DailyRate = (int)day.DailyRate,
+                                    DailyRate = (int)dailyRate,
                                     RoomAvailable = day.AvailableAreas,
                                     Created_Date = DateTime.Now,
                                     Updated_Date = DateTime.Now

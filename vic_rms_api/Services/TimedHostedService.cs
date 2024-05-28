@@ -240,7 +240,6 @@ namespace vic_rms_api.Services
             using (var scope = _scopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<vicweb_2022DbContext>();
-                //var _client = scope.ServiceProvider.GetRequiredService<HttpClient>();
                 var _client = _clientFactory.CreateClient("MyHttpClient");
 
                 if (group.CategoryIds != null && group.RateIds != null)
