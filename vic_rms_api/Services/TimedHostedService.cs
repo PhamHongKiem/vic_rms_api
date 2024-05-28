@@ -149,186 +149,7 @@ namespace vic_rms_api.Services
                 _semaphore.Release();
             }
         }
-        //private async Task DoWorkMultiThreadAsync(object state)
-        //{
-        //    try
-        //    {
-        //        await _semaphore.WaitAsync();
-        //        Logger.Log($"Timed Background Service is starting at {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-        //        DateTime currentTime = DateTime.Now;
-        //        bool isSpecialTime = (currentTime.Hour == _hour_1 && currentTime.Hour <= 20) ||
-        //                             (currentTime.Hour == _hour_2 && currentTime.Hour <= 20);
-        //        //isSpecialTime = true;
-        //        // Các tác vụ đồng bộ hóa bất đồng bộ bên trong đây
-        //        using (var scope = _scopeFactory.CreateScope())
-        //        {
-        //            var dbContext = scope.ServiceProvider.GetRequiredService<vicweb_2022DbContext>();
-        //            var executionStrategy = dbContext.Database.CreateExecutionStrategy();
-
-        //            await executionStrategy.ExecuteAsync(async () =>
-        //            {
-        //                using (var transaction = await dbContext.Database.BeginTransactionAsync())
-        //                {
-        //                    ITokenService tokenService = scope.ServiceProvider.GetRequiredService<ITokenService>();
-        //                    await tokenService.GetToken();
-
-        //                    if (!await tokenService.IsTokenValid())
-        //                    {
-        //                        await tokenService.RefreshToken();
-        //                    }
-
-        //                    var hotelsService = scope.ServiceProvider.GetRequiredService<HotelsService>();
-        //                    var hotels = await hotelsService.GetHotelsAsync();
-
-        //                    IRates_GridService rates_gridService = scope.ServiceProvider.GetRequiredService<IRates_GridService>();
-
-        //                    var ratesService = scope.ServiceProvider.GetRequiredService<RatesService>();
-
-        //                    var rates = await ratesService.GetRatesAsync();
-        //                    var Rates_Grid = await rates_gridService.GetRates_GridAsync();
-
-        //                    var groupedSpecialRate = rates.GroupBy(rate => rate.RMS_propertyID)
-        //                        .Select(group => new
-        //                        {
-        //                            PropertyId = group.Key,
-        //                            CategoryIds = group.Select(g => g.RMS_categoryID).Where(id => id.HasValue).Select(id => id.Value).Distinct().ToArray(),
-        //                            RateIds = group.Where(g => g.RMS_rateID == 17).Select(g => g.RMS_rateID).Distinct().ToArray()
-        //                        }).Where(g => g.RateIds.Any());
-
-        //                    var groupedRegularRate = rates.GroupBy(rate => rate.RMS_propertyID)
-        //                        .Select(group => new
-        //                        {
-        //                            PropertyId = group.Key,
-        //                            CategoryIds = group.Select(g => g.RMS_categoryID).Where(id => id.HasValue).Select(id => id.Value).Distinct().ToArray(),
-        //                            RateIds = group.Where(g => g.RMS_rateID != 17).Select(g => g.RMS_rateID).Distinct().ToArray()
-        //                        }).Where(g => g.RateIds.Any());
-
-
-        //                    TokenResponse tokenResponse = tokenService.GetCurrentToken();
-        //                    if (tokenResponse != null && !string.IsNullOrEmpty(tokenResponse.Token))
-        //                    {
-        //                        List<Task> tasks = new List<Task>();
-
-        //                        if (isSpecialTime)
-        //                        {
-        //                            foreach (var group in groupedSpecialRate)
-        //                            {
-        //                                tasks.Add(ProcessRate(Rates_Grid, group, tokenService, rates_gridService, isSpecialTime));
-        //                            }
-        //                        }
-        //                        foreach (var group in groupedRegularRate)
-        //                        {
-        //                            tasks.Add(ProcessRate(Rates_Grid, group, tokenService, rates_gridService, isSpecialTime));
-        //                        }
-
-        //                        await Task.WhenAll(tasks);
-        //                    }
-
-        //                    await transaction.CommitAsync();
-        //                }
-        //            });
-        //        }
-        //        Logger.Log($"Task completed at {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Logger.Log($"DoWorkMultiThreadAsync(): An error occurred: {ex.Message}");
-        //    }
-        //    finally
-        //    {
-        //        _semaphore.Release();
-        //    }
-        //}
-
-        private async Task DoWorkMultiThreadAsync_bk(object state)
-        {
-            try
-            {
-                await _semaphore.WaitAsync();
-                Logger.Log($"Timed Background Service is starting at {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-                DateTime currentTime = DateTime.Now;
-                bool isSpecialTime = (currentTime.Hour == _hour_1 && currentTime.Hour <= 20) ||
-                                     (currentTime.Hour == _hour_2 && currentTime.Hour <= 20);
-
-                using (var scope = _scopeFactory.CreateScope())
-                {
-                    var dbContext = scope.ServiceProvider.GetRequiredService<vicweb_2022DbContext>();
-                    var executionStrategy = dbContext.Database.CreateExecutionStrategy();
-
-                    await executionStrategy.ExecuteAsync(async () =>
-                    {
-                        using (var transaction = await dbContext.Database.BeginTransactionAsync())
-                        {
-                            ITokenService tokenService = scope.ServiceProvider.GetRequiredService<ITokenService>();
-                            await tokenService.GetToken();
-
-                            if (!await tokenService.IsTokenValid())
-                            {
-                                await tokenService.RefreshToken();
-                            }
-
-                            var hotelsService = scope.ServiceProvider.GetRequiredService<HotelsService>();
-                            var hotels = await hotelsService.GetHotelsAsync();
-
-                            IRates_GridService rates_gridService = scope.ServiceProvider.GetRequiredService<IRates_GridService>();
-
-                            var ratesService = scope.ServiceProvider.GetRequiredService<RatesService>();
-
-                            var rates = await ratesService.GetRatesAsync();
-                            var Rates_Grid = await rates_gridService.GetRates_GridAsync();
-
-                            var groupedSpecialRate = rates.GroupBy(rate => rate.RMS_propertyID)
-                                .Select(group => new
-                                {
-                                    PropertyId = group.Key,
-                                    CategoryIds = group.Select(g => g.RMS_categoryID).Where(id => id.HasValue).Select(id => id.Value).Distinct().ToArray(),
-                                    RateIds = group.Where(g => g.RMS_rateID == 17).Select(g => g.RMS_rateID).Distinct().ToArray()
-                                }).Where(g => g.RateIds.Any());
-
-                            var groupedRegularRate = rates.GroupBy(rate => rate.RMS_propertyID)
-                                .Select(group => new
-                                {
-                                    PropertyId = group.Key,
-                                    CategoryIds = group.Select(g => g.RMS_categoryID).Where(id => id.HasValue).Select(id => id.Value).Distinct().ToArray(),
-                                    RateIds = group.Where(g => g.RMS_rateID != 17).Select(g => g.RMS_rateID).Distinct().ToArray()
-                                }).Where(g => g.RateIds.Any());
-
-                            TokenResponse tokenResponse = tokenService.GetCurrentToken();
-                            if (tokenResponse != null && !string.IsNullOrEmpty(tokenResponse.Token))
-                            {
-                                List<Task> tasks = new List<Task>();
-
-                                if (isSpecialTime)
-                                {
-                                    foreach (var group in groupedSpecialRate)
-                                    {
-                                        //tasks.Add(Task.Run(() => ProcessRate(Rates_Grid, group, tokenService, rates_gridService, isSpecialTime)));
-                                    }
-                                }
-                                foreach (var group in groupedRegularRate)
-                                {
-                                    //tasks.Add(Task.Run(() => ProcessRate(Rates_Grid, group, tokenService, rates_gridService, isSpecialTime)));
-                                }
-
-                                await Task.WhenAll(tasks);
-                            }
-
-                            await transaction.CommitAsync();
-                        }
-                    });
-                }
-                Logger.Log($"Task completed at {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-            }
-            catch (Exception ex)
-            {
-                Logger.Log($"DoWorkMultiThreadAsync(): An error occurred: {ex.Message}");
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
-        }
-
+        
         private async Task DoWorkMultiThreadAsync(object state)
         {
             try
@@ -346,64 +167,60 @@ namespace vic_rms_api.Services
 
                     await executionStrategy.ExecuteAsync(async () =>
                     {
-                        //using (var transaction = await dbContext.Database.BeginTransactionAsync())
+                        ITokenService tokenService = scope.ServiceProvider.GetRequiredService<ITokenService>();
+                        await tokenService.GetToken();
+
+                        if (!await tokenService.IsTokenValid())
                         {
-                            ITokenService tokenService = scope.ServiceProvider.GetRequiredService<ITokenService>();
-                            await tokenService.GetToken();
-
-                            if (!await tokenService.IsTokenValid())
-                            {
-                                await tokenService.RefreshToken();
-                            }
-
-                            var hotelsService = scope.ServiceProvider.GetRequiredService<HotelsService>();
-                            var hotels = await hotelsService.GetHotelsAsync();
-
-                            IRates_GridService rates_gridService = scope.ServiceProvider.GetRequiredService<IRates_GridService>();
-
-                            var ratesService = scope.ServiceProvider.GetRequiredService<RatesService>();
-
-                            var rates = await ratesService.GetRatesAsync();
-                            var Rates_Grid = await rates_gridService.GetRates_GridAsync();
-
-                            var groupedSpecialRate = rates.GroupBy(rate => rate.RMS_propertyID)
-                                .Select(group => new
-                                {
-                                    PropertyId = group.Key,
-                                    CategoryIds = group.Select(g => g.RMS_categoryID).Where(id => id.HasValue).Select(id => id.Value).Distinct().ToArray(),
-                                    RateIds = group.Where(g => g.RMS_rateID == 17).Select(g => g.RMS_rateID).Distinct().ToArray()
-                                }).Where(g => g.RateIds.Any());
-
-                            var groupedRegularRate = rates.GroupBy(rate => rate.RMS_propertyID)
-                                .Select(group => new
-                                {
-                                    PropertyId = group.Key,
-                                    CategoryIds = group.Select(g => g.RMS_categoryID).Where(id => id.HasValue).Select(id => id.Value).Distinct().ToArray(),
-                                    RateIds = group.Where(g => g.RMS_rateID != 17).Select(g => g.RMS_rateID).Distinct().ToArray()
-                                }).Where(g => g.RateIds.Any());
-
-                            TokenResponse tokenResponse = tokenService.GetCurrentToken();
-                            if (tokenResponse != null && !string.IsNullOrEmpty(tokenResponse.Token))
-                            {
-                                List<Task> tasks = new List<Task>();
-
-                                if (isSpecialTime)
-                                {
-                                    foreach (var group in groupedSpecialRate)
-                                    {
-                                        tasks.Add(Task.Run(() => ProcessRate(group, tokenService, rates_gridService, true)));
-                                    }
-                                }
-                                foreach (var group in groupedRegularRate)
-                                {
-                                    tasks.Add(Task.Run(() => ProcessRate(group, tokenService, rates_gridService, false)));
-                                }
-
-                                await Task.WhenAll(tasks);
-                            }
-
-                            //await transaction.CommitAsync();
+                            await tokenService.RefreshToken();
                         }
+
+                        var hotelsService = scope.ServiceProvider.GetRequiredService<HotelsService>();
+                        var hotels = await hotelsService.GetHotelsAsync();
+
+                        IRates_GridService rates_gridService = scope.ServiceProvider.GetRequiredService<IRates_GridService>();
+
+                        var ratesService = scope.ServiceProvider.GetRequiredService<RatesService>();
+
+                        var rates = await ratesService.GetRatesAsync();
+                        var Rates_Grid = await rates_gridService.GetRates_GridAsync();
+
+                        var groupedSpecialRate = rates.GroupBy(rate => rate.RMS_propertyID)
+                            .Select(group => new
+                            {
+                                PropertyId = group.Key,
+                                CategoryIds = group.Select(g => g.RMS_categoryID).Where(id => id.HasValue).Select(id => id.Value).Distinct().ToArray(),
+                                RateIds = group.Where(g => g.RMS_rateID == 17).Select(g => g.RMS_rateID).Distinct().ToArray()
+                            }).Where(g => g.RateIds.Any());
+
+                        var groupedRegularRate = rates.GroupBy(rate => rate.RMS_propertyID)
+                            .Select(group => new
+                            {
+                                PropertyId = group.Key,
+                                CategoryIds = group.Select(g => g.RMS_categoryID).Where(id => id.HasValue).Select(id => id.Value).Distinct().ToArray(),
+                                RateIds = group.Where(g => g.RMS_rateID != 17).Select(g => g.RMS_rateID).Distinct().ToArray()
+                            }).Where(g => g.RateIds.Any());
+
+                        TokenResponse tokenResponse = tokenService.GetCurrentToken();
+                        if (tokenResponse != null && !string.IsNullOrEmpty(tokenResponse.Token))
+                        {
+                            List<Task> tasks = new List<Task>();
+
+                            if (isSpecialTime)
+                            {
+                                foreach (var group in groupedSpecialRate)
+                                {
+                                    tasks.Add(Task.Run(() => ProcessRate(group, tokenService, rates_gridService, true)));
+                                }
+                            }
+                            foreach (var group in groupedRegularRate)
+                            {
+                                tasks.Add(Task.Run(() => ProcessRate(group, tokenService, rates_gridService, false)));
+                            }
+
+                            await Task.WhenAll(tasks);
+                        }
+
                     });
                 }
                 Logger.Log($"Task completed at {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
@@ -523,222 +340,6 @@ namespace vic_rms_api.Services
             }
         }
 
-
-        private async Task ProcessRate_bk_1(dynamic group, ITokenService tokenService, IRates_GridService rate_gridService, bool isSpecialRate = true)
-        {
-            using (var scope = _scopeFactory.CreateScope())
-            {
-                var dbContext = scope.ServiceProvider.GetRequiredService<vicweb_2022DbContext>();
-                var _client = new HttpClient
-                {
-                    Timeout = TimeSpan.FromMinutes(2) // Tăng thời gian chờ lên 2 phút
-                };
-
-                if (group.CategoryIds != null && group.RateIds != null)
-                {
-                    DateTime dateTo_temp = DateTime.UtcNow.Date.AddYears(2);
-                    DateTime dateFrom_temp = DateTime.UtcNow.Date;
-
-                    if (!await tokenService.IsTokenValid())
-                    {
-                        await tokenService.RefreshToken();
-                    }
-
-                    // Update the authtoken header for each request
-                    string currentToken = tokenService.GetCurrentToken().Token;
-                    _client.DefaultRequestHeaders.Remove("authtoken");  // Remove the previous token if any
-                    _client.DefaultRequestHeaders.Add("authtoken", currentToken);  // Add the new token
-
-                    var checkAvailUrl = $"{_baseUrl}/availabilityRateGrid";
-
-                    // Tạo một đối tượng mới từ class RateRequest
-                    AvailabilityRequest request = new AvailabilityRequest
-                    {
-                        Adults = 2,
-                        AgentId = 0,
-                        CategoryIds = group.CategoryIds,
-                        Children = 0,
-                        DateFrom = dateFrom_temp,
-                        DateTo = dateFrom_temp,
-                        Infants = 0,
-                        PropertyId = group.PropertyId,
-                        RateIds = group.RateIds
-                    };
-
-                    while (dateFrom_temp <= dateTo_temp.AddDays(-14))
-                    {
-                        try
-                        {
-                            request.DateFrom = dateFrom_temp;
-                            request.DateTo = dateFrom_temp.AddDays(14);
-
-                            var jsonRequest = JsonConvert.SerializeObject(request);
-                            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
-
-                            HttpResponseMessage response = new HttpResponseMessage();
-                            for (int i = 0; i <= 10; i++)
-                            {
-                                try
-                                {
-                                    response = await _client.PostAsync(checkAvailUrl, content);
-                                    if (response.IsSuccessStatusCode)
-                                    {
-                                        var json = await response.Content.ReadAsStringAsync();
-                                        var availabilityResponse = JsonConvert.DeserializeObject<AvailabilityResponse>(json);
-                                        if (availabilityResponse != null)
-                                        {
-                                            var ratesGrid = await dbContext.wp_rates_grid.Where(g => g.Datesell >= DateTime.Today).ToListAsync();
-
-                                            if (isSpecialRate)
-                                            {
-                                                await rate_gridService.UpdateRates_Grid_SpecialRateAsync(ratesGrid, availabilityResponse, group.PropertyId);
-                                            }
-                                            else
-                                            {
-                                                await rate_gridService.UpdateRates_Grid_RegularRateAsync(ratesGrid, availabilityResponse, group.PropertyId);
-                                            }
-                                        }
-                                        break;
-                                    }
-                                }
-                                catch (TaskCanceledException ex) when (ex.CancellationToken == CancellationToken.None)
-                                {
-                                    // Xử lý trường hợp hết thời gian chờ
-                                    Logger.Log($"ProcessRate(): Request timed out for Property ID: {group.PropertyId}, CategoryIds: {group.CategoryIds}, RateIds: {group.RateIds}. Retry {i + 1} of 10.");
-                                }
-                                catch (HttpRequestException ex)
-                                {
-                                    // Xử lý các lỗi kết nối khác
-                                    Logger.Log($"ProcessRate(): HttpRequestException for Property ID: {group.PropertyId}, CategoryIds: {group.CategoryIds}, RateIds: {group.RateIds}. Retry {i + 1} of 10. Error: {ex.Message}");
-                                }
-                            }
-                            if (!response.IsSuccessStatusCode)
-                            {
-                                Logger.Log($"ProcessRate(): Failed to send data for Property ID: {group.PropertyId}, CategoryIds: {group.CategoryIds}, RateIds: {group.RateIds}. request: {jsonRequest}");
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.Log($"ProcessRate(): An error occurred: {ex.Message}");
-                            if (ex.InnerException != null)
-                                Logger.Log($"ProcessRate(): Inner exception: {ex.InnerException.Message}");
-                        }
-
-                        dateFrom_temp = dateFrom_temp.AddDays(14);
-                    }
-                }
-            }
-        }
-
-
-        private async Task ProcessRate_bk(List<wp_rates_grid> Rates_Grid, dynamic group, ITokenService tokenService, IRates_GridService rate_gridService, bool isSpecialRate=true)
-        {
-            #region MyRegion
-            using (var scope = _scopeFactory.CreateScope())
-            {
-                if (group.CategoryIds != null && group.RateIds != null)
-                {
-                    DateTime dateTo_temp = DateTime.UtcNow.Date.AddYears(2);
-                    DateTime dateFrom_temp = DateTime.UtcNow.Date;
-                    var _client = _clientFactory.CreateClient("MyHttpClient");
-                    if (!tokenService.IsTokenValid().Result)
-                    {
-                        await tokenService.RefreshToken();
-                    }
-                    //try
-                    {
-                        // Update the authtoken header for each request
-                        string currentToken = tokenService.GetCurrentToken().Token;
-                        _client.DefaultRequestHeaders.Remove("authtoken");  // Remove the previous token if any
-                        _client.DefaultRequestHeaders.Add("authtoken", currentToken);  // Add the new token
-                    }
-                    //catch (Exception ex)
-                    //{
-                    //    // Update the authtoken header for each request
-                    //    string currentToken = tokenService.GetCurrentToken().Token;
-                    //    _client.DefaultRequestHeaders.Remove("authtoken");  // Remove the previous token if any
-                    //    _client.DefaultRequestHeaders.Add("authtoken", currentToken);  // Add the new token
-                    //}
-
-                    var checkAvailUrl = $"{_baseUrl}/availabilityRateGrid";
-
-                    // Tạo một đối tượng mới từ class RateRequest
-                    AvailabilityRequest request = new AvailabilityRequest
-                    {
-                        Adults = 2,
-                        AgentId = 0,
-                        CategoryIds = group.CategoryIds,
-                        Children = 0,
-                        DateFrom = Convert.ToDateTime(dateFrom_temp.ToString("yyyy-MM-dd HH:mm:ss")),
-                        DateTo = Convert.ToDateTime(dateFrom_temp.ToString("yyyy-MM-dd HH:mm:ss")),
-                        Infants = 0,
-                        PropertyId = group.PropertyId,
-                        RateIds = group.RateIds
-                    };
-
-                    while (dateFrom_temp <= dateTo_temp.AddDays(-14))
-                    {
-                        //await semaphore.WaitAsync(); // Đợi đến khi có slot trống
-
-                        try
-                        {
-                            request.DateFrom = Convert.ToDateTime(dateFrom_temp.ToString("yyyy-MM-dd HH:mm:ss"));
-                            request.DateTo = Convert.ToDateTime(dateFrom_temp.AddDays(14).ToString("yyyy-MM-dd HH:mm:ss"));
-
-                            var jsonRequest = JsonConvert.SerializeObject(request);
-                            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
-
-                            {
-                                HttpResponseMessage response=new HttpResponseMessage();
-                                for ( var i = 0; i <= 10; i++)
-                                {
-                                    response = await _client.PostAsync(checkAvailUrl, content);
-                                    if (response.IsSuccessStatusCode)
-                                    {
-                                        var json = await response.Content.ReadAsStringAsync();
-                                        var availabilityResponse = JsonConvert.DeserializeObject<AvailabilityResponse>(json);
-                                        if (availabilityResponse != null)
-                                        {
-                                            if (isSpecialRate)
-                                            {
-                                                await rate_gridService.UpdateRates_Grid_SpecialRateAsync(Rates_Grid, availabilityResponse, group.PropertyId);
-                                            }
-                                            else
-                                            {
-                                                await rate_gridService.UpdateRates_Grid_RegularRateAsync(Rates_Grid, availabilityResponse, group.PropertyId);
-                                            }
-                                        }
-                                        break;
-                                    }
-                                    
-                                }
-                                if (!response.IsSuccessStatusCode)
-                                {
-                                    Logger.Log($"ProcessRate(): Failed to send data for Property ID: {group.PropertyId}, CategoryIds: {group.CategoryIds}, RateIds: {group.RateIds}. request: {jsonRequest}");
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.Log($"ProcessRate(): An error occurred: {ex.Message}");
-                            if (ex.InnerException != null)
-                                Logger.Log($"ProcessRate(): Inner exception: {ex.InnerException.Message}");
-                        }
-                        finally
-                        {
-                            //semaphore.Release(); // Phải luôn release semaphore
-                        }
-
-                        dateFrom_temp = dateFrom_temp.AddDays(14);
-                    }
-                }
-                
-            }
-            #endregion
-        }
-
-
-
         public Task StopAsync(CancellationToken cancellationToken)
         {
             _timer?.Change(Timeout.Infinite, 0);
@@ -752,74 +353,5 @@ namespace vic_rms_api.Services
 
 
     }
-
-
-    #region MyRegion
-    //public class ScheduledTaskService : IHostedService, IDisposable
-    //{
-    //    private readonly IServiceScopeFactory _scopeFactory;
-    //    private Timer _timer;
-
-    //    public ScheduledTaskService(IServiceScopeFactory scopeFactory)
-    //    {
-    //        _scopeFactory = scopeFactory;
-    //    }
-
-
-    //    public Task StartAsync(CancellationToken cancellationToken)
-    //    {
-    //        _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromMinutes(0.1)); // Chạy mỗi phút
-    //        return Task.CompletedTask;
-    //    }
-
-    //    private void DoWork(object state)
-    //    {
-    //        using (var scope = _scopeFactory.CreateScope())
-    //        {
-    //            //var dbContext = scope.ServiceProvider.GetRequiredService<vicweb_2022DbContext>();
-    //            CheckAvailability();
-    //        }
-    //        FetchToken();
-    //    }
-
-    //    public Task StopAsync(CancellationToken cancellationToken)
-    //    {
-    //        _timer?.Change(Timeout.Infinite, 0);
-    //        return Task.CompletedTask;
-    //    }
-
-    //    public void Dispose()
-    //    {
-    //        _timer?.Dispose();
-    //    }
-
-    //    private void FetchToken()
-    //    {
-    //        // Viết logic lấy token tại đây
-    //    }
-
-    //private async Task<List<wp_rate>> GetRate(vicweb_2022DbContext context)
-    //{
-    //    return await context.Wp_Rates.ToListAsync();
-    //}
-
-    //    private async void CheckAvailability()
-    //    {
-    //        using (var scope = _scopeFactory.CreateScope())
-    //        {
-    //            var dbContext = scope.ServiceProvider.GetRequiredService<vicweb_2022DbContext>();
-    //            var rates = await GetRate(dbContext);
-    //            // Xử lý kiểm tra tính khả dụng tại đây
-    //            foreach (var rate in rates)
-    //            {
-    //                // Giả sử bạn muốn kiểm tra tính khả dụng cho mỗi rate
-    //                Console.WriteLine($"Checking availability for Rate Name: {rate.Rate_Name}, Property ID: {rate.RMS_propertyID}");
-    //            }
-    //        }
-    //    }
-
-    //} 
-    #endregion
-
 
 }

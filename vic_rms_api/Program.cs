@@ -45,7 +45,7 @@ builder.Services.AddDbContext<vicweb_2022DbContext>(options =>
 // Cấu hình HttpClient với thời gian chờ tăng lên
 builder.Services.AddHttpClient("MyHttpClient", client =>
 {
-    client.Timeout = TimeSpan.FromMinutes(3); // Tăng thời gian chờ lên 5 phút
+    client.Timeout = TimeSpan.FromMinutes(3); // Tăng thời gian chờ lên 3 phút
 });
 
 // Configure CORS
