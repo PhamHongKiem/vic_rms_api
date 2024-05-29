@@ -132,16 +132,18 @@ namespace vic_rms_api.Services
                                 RMS_rateID = rate.RateId,
                                 RMS_roomtypeID = cat.CategoryId,
                                 Datesell = day.TheDate,
-                                DailyRate = (decimal?)day.DailyRate ?? -1, // Gán giá trị mặc định là -1 nếu không có DailyRate
+                                DailyRate = day.DailyRate.HasValue ? day.DailyRate.Value : -1, // Gán giá trị mặc định là -1 nếu không có DailyRate
                                 RoomAvailable = day.AvailableAreas
                             })))
                     .Distinct()
                     .ToList();
 
-                var relevantRates = wp_rates_grid.Where(r => r.RMS_propertyID == propertyId && keys.Select(k => k.Datesell).Contains(r.Datesell))
+                var relevantRates = wp_rates_grid
+                    .Where(r => r.RMS_propertyID == propertyId && keys.Select(k => k.Datesell).Contains(r.Datesell))
                     .ToList();
 
                 var existingRates = new Dictionary<RateKey, wp_rates_grid>();
+
                 foreach (var rate in relevantRates)
                 {
                     var key = new RateKey
@@ -168,7 +170,7 @@ namespace vic_rms_api.Services
                     {
                         foreach (var day in rate.DayBreakdown)
                         {
-                            decimal dailyRate = (decimal?)day.DailyRate ?? -1;
+                            var dailyRate = day.DailyRate.HasValue ? day.DailyRate.Value : -1;
                             var key = new RateKey
                             {
                                 RMS_propertyID = propertyId,
@@ -221,7 +223,6 @@ namespace vic_rms_api.Services
                 Logger.Log($"UpdateRates_Grid_RegularRateAsync(): An error occurred: {ex.Message}");
             }
         }
-
 
         private async Task SaveChangesAsync(List<wp_rates_grid> newRates, List<wp_rates_grid> updatedRates)
         {
