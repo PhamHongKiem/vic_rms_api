@@ -47,7 +47,7 @@ namespace vic_rms_api.Models
         public bool ClosedOnDeparture { get; set; }
 
         [JsonProperty("dailyRate")]
-        public decimal DailyRate { get; set; }
+        public decimal? DailyRate { get; set; }
 
         [JsonProperty("theDate")]
         [System.Text.Json.Serialization.JsonConverter(typeof(JsonDateTimeNullableConverter))]
@@ -64,6 +64,7 @@ namespace vic_rms_api.Models
 
         [JsonProperty("stopSell")]
         public bool StopSell { get; set; }
+
     }
 
 }
