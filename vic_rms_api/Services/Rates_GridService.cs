@@ -57,7 +57,7 @@ namespace vic_rms_api.Services
                                 RMS_roomtypeID = cat.CategoryId,
                                 Datesell = day.TheDate
                             },
-                            Value = new { DailyRate = day.DailyRate, AvailableRooms = day.AvailableAreas }
+                            Value = new { DailyRate = day.DailyRate.HasValue ? day.DailyRate.Value : -1, AvailableRooms = day.AvailableAreas }
                         })))
                     .GroupBy(x => x.Key)
                     .ToDictionary(g => g.Key, g => g.First().Value);  // Assume the first value is sufficient if duplicates exist
@@ -78,23 +78,6 @@ namespace vic_rms_api.Services
                         updatedRates.Add(rate);  // Add to updatedRates list
                         count++;  // Increment the counter after each update
                     }
-                    else
-                    {
-                        // If key not found in existing rates, prepare to add new record
-                        var newRateGrid = new wp_rates_grid
-                        {
-                            RMS_rateID = 17,  // Assuming the special rate ID is 17
-                            RMS_roomtypeID = rate.RMS_roomtypeID,
-                            RMS_propertyID = propertyId,
-                            Datesell = rate.Datesell,
-                            DailyRate = (int)value.DailyRate,
-                            RoomAvailable = value.AvailableRooms,
-                            Created_Date = DateTime.Now,
-                            Updated_Date = DateTime.Now
-                        };
-                        newRates.Add(newRateGrid);
-                        count++;
-                    }
 
                     // Check after every 100 records processed
                     if (count > 0 && count % 300 == 0)
@@ -106,7 +89,7 @@ namespace vic_rms_api.Services
                 }
 
                 // Ensure to save any remaining changes after the final iteration
-                if (count % 300 != 0 || newRates.Any() || updatedRates.Any())
+                if (count % 300 != 0 || updatedRates.Any())
                 {
                     await SaveChangesAsync(newRates, updatedRates);
                 }

@@ -157,8 +157,8 @@ namespace vic_rms_api.Services
                 await _semaphore.WaitAsync();
                 Logger.Log($"Timed Background Service is starting at {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
                 DateTime currentTime = DateTime.Now;
-                bool isSpecialTime = (currentTime.Hour == _hour_1 && currentTime.Hour <= 20) ||
-                                     (currentTime.Hour == _hour_2 && currentTime.Hour <= 20);
+                bool isSpecialTime = (currentTime.Hour == _hour_1) ||
+                                     (currentTime.Hour == _hour_2);
 
                 using (var scope = _scopeFactory.CreateScope())
                 {
