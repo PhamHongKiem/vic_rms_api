@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\HongKiem\source\repos\vic_rms_api\vic_rms_api\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>True|2024-05-30T05:13:04.3583899Z;True|2024-05-30T09:12:37.3780571+07:00;True|2024-05-29T10:03:12.0744715+07:00;True|2024-05-29T10:02:46.3968138+07:00;True|2024-05-28T23:07:40.9994918+07:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
